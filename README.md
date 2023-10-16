@@ -11,7 +11,7 @@
 - [] Heaps
 - [] Array & Dynamic Array
 - [] Vectors/ArrayLists
-- [] Hash Tables, Hash Map, Hash Set
+- [x] Hash Tables, Hash Map, Hash Set
 - [] Disjoint Set
 
 ## Algorithms

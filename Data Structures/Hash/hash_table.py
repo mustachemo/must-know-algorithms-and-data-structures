@@ -1,124 +1,94 @@
+# This is an implementation of a hash table, which is a data structure that
+# stores data in key-value pairs. This implementation is a hash table with
+# chaining, which means that if there is a collision, the data will be stored
 
-class Node:
-    '''The node in the linked list'''
-
-    def __init__(self, key, value) -> None:
-        self.key = key
-        self.value = value
-        self.next = None
-
+# Other forms of hash tables include hash sets, which only store values, and
+# hash maps, which are the same as hash tables but not synchornized, meaning
+# that they are not thread safe
 
 class HashTable:
-    '''
-    the array that will hold the linked lists
-
-    '''
-
-    def __init__(self, capacity) -> None:
-        self.capacity = capacity
-        self.size = 0
-        # initialize the array with size capacity and all values are None
-        self.table = [None] * capacity
-
-    def __str__(self):
-        elements = []
-        for i in range(self.capacity):
-            current = self.table[i]
-            while current:
-                elements.append((current.key, current.value))
-                current = current.next
-        return str(elements)
+    def __init__(self, size):
+        self.size = size
+        self.data = [None] * size
 
     def _hash(self, key):
-        '''hash function'''
-        return hash(key) % self.capacity
+        '''
+        This is a private method that is only used within the class,
+        this function will return the hash of the key by using the
+        ASCII value of the key and multiplying it by the index of the
+        key in the string
+        '''
+        hash = 0
+        for i in range(len(key)):
+            hash = (hash + ord(key[i]) * i) % self.size
+        return hash
 
-    def insert(self, key, value):
-        '''insert key value pair into hash table'''
-        index = self._hash(key)
+    def set(self, key, value):
+        '''
+        This function will set the value of the key in the hash table
+        '''
+        hash = self._hash(key)
+        if not self.data[hash]:
+            self.data[hash] = []
+        self.data[hash].append([key, value])
+        return self.data
 
-        if self.table[index] is None:
-            self.table[index] = Node(key, value)
-            self.size += 1
-        else:
-            current = self.table[index]
-            while current:
-                if current.key == key:
-                    current.value = value
+    def get(self, key):
+        hash = self._hash(key)
+        if self.data[hash]:
+            for i in range(len(self.data[hash])):
+                if self.data[hash][i][0] == key:
+                    return self.data[hash][i][1]
+        return None
+
+    def keys(self):
+        keys = []
+        for i in range(self.size):
+            if self.data[i]:
+                for j in range(len(self.data[i])):
+                    keys.append(self.data[i][j][0])
+        return keys
+
+    def values(self):
+        values = []
+        for i in range(self.size):
+            if self.data[i]:
+                for j in range(len(self.data[i])):
+                    values.append(self.data[i][j][1])
+        return values
+
+    def entries(self):
+        entries = []
+        for i in range(self.size):
+            if self.data[i]:
+                for j in range(len(self.data[i])):
+                    entries.append(self.data[i][j])
+        return entries
+
+    def delete(self, key):
+        hash = self._hash(key)
+        if self.data[hash]:
+            for i in range(len(self.data[hash])):
+                if self.data[hash][i][0] == key:
+                    print(f'deleting {self.data[hash][i]}')
+                    self.data[hash].pop(i)
                     return
-                current = current.next
-            new_node = Node(key, value)
-            new_node.next = self.table[index]
-            self.table[index] = new_node
-            self.size += 1
-
-    def remove(self, key):
-        '''Remove the value based on the key'''
-        index = self._hash(key)
-
-        previous = None
-        current = self.table[index]
-
-        while current:
-            if current.key == key:
-                if previous:
-                    previous.next = current.next
-                else:
-                    self.table[index] = current.next
-                self.size -= 1
-                return
-            previous = current
-            current = current.next
-
-        raise KeyError(key)
-
-    def search(self, key):
-        '''Search for the value based on the key'''
-        index = self._hash(key)
-
-        current = self.table[index]
-        while current:
-            if current.key == key:
-                return current.value
-            current = current.next
-            raise KeyError(key)
-
-    def __len__(self):
-        return self.size
-
-    def __contains__(self, key):
-        try:
-            self.search(key)
-            return True
-        except KeyError:
-            return False
+        return False
 
 
-# Driver code
-if __name__ == '__main__':
+if __name__ == "__main__":
+    hash_table = HashTable(50)
+    hash_table.set("grapes", 10000)
+    hash_table.set("apples", 54)
+    hash_table.set("oranges", 2)
+    hash_table.set("bananas", 10)
+    print(hash_table.get("grapes"))
+    print(hash_table.keys())
+    print(hash_table.values())
+    print(hash_table.entries())
+    hash_table.delete("apples")
 
-    # Create a hash table with
-    # a capacity of 5
-    ht = HashTable(5)
-
-    # Add some key-value pairs
-    # to the hash table
-    ht.insert("apple", 3)
-    ht.insert("banana", 2)
-    ht.insert("cherry", 5)
-
-    # Check if the hash table
-    # contains a key
-    print("apple" in ht)  # True
-    print("durian" in ht)  # False
-
-    # Get the value for a key
-    print(ht.search("banana"))  # 2
-
-    # Update the value for a key
-    ht.insert("banana", 4)
-    print(ht.search("banana"))  # 4
-
-    ht.remove("apple")
-    # Check the size of the hash table
-    print(len(ht))  # 3
+    print(hash_table.get("apples"))
+    print(hash_table.keys())
+    print(hash_table.values())
+    print(hash_table.entries())
