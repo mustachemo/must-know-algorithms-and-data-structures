@@ -28,7 +28,7 @@ class SinglyLinkedList:
             return
 
         if self.head.data == data:
-            self.head = self.head.next
+            self.head = None
             return
 
         current = self.head
