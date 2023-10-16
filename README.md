@@ -5,7 +5,7 @@
 - [x] Linked Lists
 - [x] Trees
 - [x] Tries
-- [ ] Graphs
+- [x] Graphs
 - [x] Stacks
 - [x] Queues
 - [x] Heaps
@@ -16,19 +16,19 @@
 
 ## Algorithms
 
-- [ ] BFS
-- [ ] DFS
-- [ ] Binary Search
-- [ ] Merge Sort
-- [ ] Quick Sort
-- [ ] Bubble Sort
-- [ ] Selection Sort
-- [ ] String Matching Algorithms
+- [x] BFS
+- [x] DFS
+- [x] Binary Search
+- [x] Merge Sort
+- [x] Quick Sort
+- [x] Bubble Sort
+- [x] Selection Sort
+- [x] String Matching Algorithms
 
 ## Concepts
 
-- [ ] Bit Manipulation
-- [ ] Sliding Window
+- [x] Bit Manupilation
+- [x] Sliding Window
 - [ ] Double Pointer
 - [ ] Graph Theory Concepts
 - [ ] Memory (Stack vs. Heap)
