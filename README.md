@@ -29,11 +29,11 @@
 
 - [x] Bit Manupilation
 - [x] Sliding Window
-- [ ] Double Pointer
-- [ ] Graph Theory Concepts
-- [ ] Memory (Stack vs. Heap)
-- [ ] Recursion
-- [ ] Dynamic Programming
-- [ ] Big O Time & Space
-- [ ] Greedy Algorithms
-- [ ] Backtracking
+- [x] Double Pointer
+- [x] Graph Theory Concepts
+- [x] Memory (Stack vs. Heap)
+- [x] Recursion
+- [x] Dynamic Programming
+- [x] Big O Time & Space
+- [x] Greedy Algorithms
+- [x] Backtracking
