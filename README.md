@@ -2,17 +2,17 @@
 
 ## Data Structures
 
-- [ ] Linked Lists
-- [ ] Trees
-- [ ] Tries
+- [x] Linked Lists
+- [x] Trees
+- [x] Tries
 - [ ] Graphs
-- [ ] Stacks
-- [ ] Queues
-- [ ] Heaps
-- [ ] Array & Dynamic Array
-- [ ] Vectors/ArrayLists
+- [x] Stacks
+- [x] Queues
+- [x] Heaps
+- [x] Array & Dynamic Array
+- [x] Vectors/ArrayLists
 - [x] Hash Tables, Hash Map, Hash Set
-- [ ] Disjoint Set
+- [x] Disjoint Set
 
 ## Algorithms
 
