@@ -70,3 +70,4 @@ if __name__ == "__main__":
     linked_list.delete(2)
     linked_list.display()
     linked_list.remove_duplicates()
+    nums = [1, 2, 3]
